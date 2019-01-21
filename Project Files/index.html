@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>CitiBike usage in NYC</title>
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+		d3version5 = d3
+	    window.d3 = null
+  </script>
+   <script src="data.js"></script>
+  <script src="barPlotScript.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+	<script>
+		d3version4 = d3
+	  window.d3 = null
+  </script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script>
+		d3version3 = d3
+	  window.d3 = null
+  </script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <script src="d3.geo.tile.v0.min.js"></script>
+  <script src="d3.tip.js"></script>
+  <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body onload="barChart()">
+  <div id = "layout">CitiBike Usage in NYC</div></br>
+  <div style='clear:both'></div>
+  
+      <div id=  "container3" class="divSquare">
+          <iframe sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="mappaProjNYC.html" marginwidth="0" marginheight="0" style="height:100%; width:100%;" scrolling="no"  frameBorder="0"></iframe>
+          <svg id="svg3" />
+          <div id='neighborhoodPopover'> </div>
+        </div>
+        </br>
+        <div id=  "container4" class="divSquare">
+        <iframe id = "clusterIframe" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="smallMultiples.html" marginwidth="0" marginheight="0" style="height:100%; width:100%;" scrolling="no"  frameBorder="0"></iframe>
+        </div>
+  
+  
+      
+        <div style='clear:both;'></div>
+  <div id='container' class="divSquare">
+    
+    
+    <svg id="svg1" />
+  <div style="text-align: center">
+    <form name = "options" id="form#svg1">
+      <input  type='radio' id="buttonM" name="gender"  onchange="changeIt('#svg1')" value="1">Men</input>
+      <input type='radio' id="buttonF" name="gender" onchange="changeIt('#svg1')" value="2">Women</input>
+      <input type='radio' id="buttonBoth" name="gender" onchange="changeIt('#svg1')" value="both" checked>Both</input>
+
+      <input type="number" id="minAge#svg1" min = "0" max = "115" value = "0"> 
+
+      <input type="number" id="maxAge#svg1" min = "0" max = "115" value = "115">
+
+      <input type="button" id = "reload1" name = "reload" value="Filter Age" onclick="changeIt('#svg1')">
+    </form>
+  </div>
+    
+  
+   </div>
+  
+    <div id=  "container" class="divSquare">
+      
+      
+      <svg id="svg2"/>
+    
+      <div style="text-align: center">
+        <form name = "options" id="form#svg2">
+          <input  type='radio' id="buttonM2" name="gender"  onchange="changeIt('#svg2')" value="1">Men</input>
+          <input type='radio' id="buttonF2" name="gender" onchange="changeIt('#svg2')" value="2">Women</input>
+          <input type='radio' id="buttonBoth2" name="gender" onchange="changeIt('#svg2')" value="both" checked>Both</input>
+    
+          <input type="number" id="minAge#svg2" min = "0" max = "115" value = "0"> 
+    
+          <input type="number" id="maxAge#svg2" min = "0" max = "115" value = "115">
+    
+          <input type="button" id = "reload2" name = "reload2" value="Filter Age" onclick="changeIt('#svg2')">
+        </form>
+      </div>
+      
+    </div>
+      </div>
+      
+      <div style = "padding-left:45%;">
+        <input type="button" id = "reset" name = "reset" value="Reset Plots" onclick="resetPlots()">
+      </div>
+      
+      <input type="text" id="changer" hidden value="" onchange="filterOnStation()">
+      
+      <input type="text" id="holderChange" hidden value="" onchange="changeClusterSM()">
+   
+
+</body>
+</html>
